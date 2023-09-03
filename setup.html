@@ -10,24 +10,17 @@
             font-family:'Courier New', Courier, monospace;
         }
         
-        /* Initially hide the hidden text */
-        #hidden-text {
-            display: none;
-        }
-        #extra-hidden-text {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <h1 id="mid">Login Page!</h1>
-    <form>
-        <input placeholder="Name">
-        <input placeholder="Username"> <br>
-        <input placeholder="Password"> 
-        <input placeholder="Confirm Password"> <br>
-        <button type="submit">Submit</button>
-    </form>
+    <h1 id="mid">Setup Your Account</h1>
+
+    <input placeholder="Name">
+    <input placeholder="Username"> <br>
+    <input placeholder="Password"> 
+    <input placeholder="Confirm Password"> <br>
+    <button type="submit" id="submit">Submit</button>
+
     
     <!-- Button to reveal hidden text -->
     <div>
@@ -38,10 +31,24 @@
     <!-- Hidden text -->
 
     <script>
+
+        function createURL(dick){
+            var baseurl = window.location.origin + "/profile.html";
+            for (var key in dick) {
+                if (dick.hasOwnProperty(key)) {
+                    baseurl+=key+"="+dick[key]+"&"
+                }
+            }
+            console.log(baseurl.substring(0, baseurl.length-1));
+            return new URL(baseurl.substring(0, baseurl.length-1));
+        }
+
         // JavaScript to show the hidden text when the button is clicked
-        document.getElementById("new").addEventListener("click", function() {
-            window.location = window.location.origin+'/signup.html';
+        document.getElementById("submit").addEventListener("click", function() {
+            console.log(createURL({"hello" : "w", "world" : "h"}));
+           //window.location = window.location.origin+'/profile.html';
         });
+        
 
     </script>
 </body>

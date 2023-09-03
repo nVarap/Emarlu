@@ -21,30 +21,51 @@
     </style>
 </head>
 <body>
-    <h1 id="mid">Login Page!</h1>
-    <form>
-        <input placeholder="Name">
-        <input placeholder="Username"> <br>
-        <input placeholder="Password"> 
-        <input placeholder="Confirm Password"> <br>
-        <button type="submit" id="submit">Submit</button>
-    </form>
+    <h1 id="mid">Sign-Up for an Account!</h1>
+     
+    <input placeholder="Name" id="name">
+    <input placeholder="Username" id="user"> <br>
+    <input placeholder="Password" id="pass"> 
+    <input placeholder="Confirm Password" id="cpass"> <br>
+    <button id="submit">Submit</button>
     
-    <!-- Button to reveal hidden text -->
-    <div>
-    <p style="font-size: small;" id="new">Don't have an account? Click here to Sign up!</p>
-    <p style="font-size: small;"> Forgot Password </p>
-    </div>
     
     <!-- Hidden text -->
 
     <script>
         // JavaScript to show the hidden text when the button is clicked
-        document.getElementById("new").addEventListener("click", function() {
-            window.location = window.location.origin+'/signup.html';
-        });
         document.getElementById("submit").addEventListener("click", function() {
-            window.location = window.location.origin+'/signup.html';
+            // validation
+            console.log("killed it!");
+            var name = document.getElementById("name").value;
+            var user = document.getElementById("user").value;
+            var pass = document.getElementById("pass").value;
+            var cpass = document.getElementById("cpass").value;
+            console.log(name);
+            if(name !== "" && user !== "" && pass !== "" && cpass !== ""){
+                
+                // check if username is not in database
+
+                const info = {
+                    "name" : name,
+                    "username" : user,
+                    "password" : pass
+                } 
+
+                // Post stuff here
+
+                // validate passwords
+                if (pass === cpass){
+                    console.log("input validated");
+                    window.location = window.location.origin + "/setup.html";
+                }
+                else {
+                    console.log("input not validated");
+                }
+            }
+            else {
+                console.log("you!");
+            }
         });
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up!</title>
+    <title>Sign Up</title>
     <style>
         body {
             background-color:khaki;
@@ -27,7 +27,7 @@
         <input placeholder="Username"> <br>
         <input placeholder="Password"> 
         <input placeholder="Confirm Password"> <br>
-        <button type="submit">Submit</button>
+        <button type="submit" id="submit">Submit</button>
     </form>
     
     <!-- Button to reveal hidden text -->
@@ -43,7 +43,9 @@
         document.getElementById("new").addEventListener("click", function() {
             window.location = window.location.origin+'/signup.html';
         });
-
+        document.getElementById("submit").addEventListener("click", function() {
+            window.location = window.location.origin+'/signup.html';
+        });
     </script>
 </body>
 </html>

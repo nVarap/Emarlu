@@ -1,0 +1,26 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile</title>
+    <link rel="stylesheet" href="profile.scss">
+    <script>
+        window.addEventListener("load", (event) => {
+            document.getElementById("image").setAttribute("src", "test.jpeg");
+        }); 
+    </script> 
+</head>
+<body class="body">
+    <h1 class="centered" style="text-align: center; position: relative; top: 50px;">Name's Profile</h1>
+    <span>
+        <div class="split left">
+            <img id="image" src="" style="position: relative; left: 200px; top: 100px;" width="500px" length="500px">  
+        </div>
+        <div class="split right center"  style="font: 300;">
+            <div style="font-size: 40px; position: relative; left: 200px; top: 200px;">
+                <p>Bio</p>
+                <p>Gender</p>
+                <p> Likes</p>
+            </div>
+        </div>
+    </span>
+</body>   

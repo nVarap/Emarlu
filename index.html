@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Background with Green Text and Hidden Text</title>
+    <style>
+        body {
+            background-color:khaki;
+            color: green;
+            font-family:'Courier New', Courier, monospace;
+        }
+        
+        /* Initially hide the hidden text */
+        #hidden-text {
+            display: none;
+        }
+        #extra-hidden-text {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="mid">Welcome to the CODE MONKEYs dating application, created by the code monkeys</h1>
+    <p> Login, create an account, and match with them monkeys!</p>
+    
+    <!-- Button to reveal hidden text -->
+    <button id="login">Login Page</button>
+    
+    <!-- Hidden text -->
+
+    <script>
+        // JavaScript to show the hidden text when the button is clicked
+        document.getElementById("login").addEventListener("click", function() {
+            window.location = window.location.origin+'/login.html';
+        });
+
+    </script>
+</body>
+</html>

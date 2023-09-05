@@ -14,19 +14,17 @@
 </head>
 <body>
     <h1 id="mid">Setup Your Account</h1>
-
-    <input placeholder="Name">
-    <input placeholder="Username"> <br>
-    <input placeholder="Password"> 
-    <input placeholder="Confirm Password"> <br>
-    <button type="submit" id="submit">Submit</button>
-
-    
-    <!-- Button to reveal hidden text -->
+    <input placeholder="Gender" id="gender"> <br>
+    <div id="like-container">
+        <input placeholder="Likes" style="width: 50px;"> 
+        <input type="image" src="plus.png" id="add" width="10px" length="10px">
     <div>
-    <p style="font-size: small;" id="new">Don't have an account? Click here to Sign up!</p>
-    <p style="font-size: small;"> Forgot Password </p>
-    </div>
+    <br>
+    <input type="file" id="file-selector" accept=".jpg, .jpeg, .png"> <br>
+    <button id="submit"></button>
+
+
+
     
     <!-- Hidden text -->
 
@@ -46,6 +44,13 @@
         // JavaScript to show the hidden text when the button is clicked
         document.getElementById("submit").addEventListener("click", function() {
             console.log(createURL({"hello" : "w", "world" : "h"}));
+           //window.location = window.location.origin+'/profile.html';
+        });
+        document.getElementById("add").addEventListener("click", function() {
+            var reput = document.createElement("input");
+            reput.setAttribute("placeholder", "Likes");
+            reput.setAttribute("style", "width: 50px;");
+            document.getElementById("like-container").appendChild(reput);
            //window.location = window.location.origin+'/profile.html';
         });
         

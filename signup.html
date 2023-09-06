@@ -27,6 +27,8 @@
     <input placeholder="Username" id="user"> <br>
     <input placeholder="Password" id="pass"> 
     <input placeholder="Confirm Password" id="cpass"> <br>
+
+
     <button id="submit">Submit</button>
     
     
@@ -56,7 +58,7 @@
 
                 // validate passwords
                 if (pass === cpass){
-                    console.log("input validated");
+                    localStorage.setItem("name", name);
                     window.location = window.location.origin + "/setup.html";
                 }
                 else {
@@ -70,3 +72,4 @@
     </script>
 </body>
 </html>
+

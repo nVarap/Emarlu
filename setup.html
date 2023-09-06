@@ -14,7 +14,11 @@
 </head>
 <body>
     <h1 id="mid">Setup Your Account</h1>
+    <input placeholder="Your Name" id="name"> <br>
+    <input placeholder="Age" id="age"> <br>
     <input placeholder="Gender" id="gender"> <br>
+    <input placeholder="Interests" id="interests"> <br>
+
     <div id="like-container">
         <input type="image" src="plus.png" id="add" width="10px" length="10px">
         <input placeholder="Likes" style="width: 50px;">  <br>
@@ -26,10 +30,60 @@
 
 
 
+
+
     
     <!-- Hidden text -->
 
     <script>
+
+// api call code here
+function postProfile() {
+      const url = "http://127.0.0.1:8086/api/daters/create";  // url that has all the data and list of profiles
+      
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+      const gender = document.getElementById("gender").value;
+      const interests = document.getElementById("interests").value;
+
+      const options = {
+        method: 'POST', // POST = adding a profile
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          uid: name + '' + age, // uid for now is just a combination of the user's name and their age (prob not the best idea but we can just stick with this till then)
+          gender: gender,
+          age: age,
+          interests: interests
+        })
+      }
+
+      fetch(url, options) // fetches the data using the local host server from above
+        .then(response => response.json())
+        .then(data => {
+          console.log(data); // prints the data if all goes well
+
+          if(data){
+            alert("Your profile has been made and is published for everyone to see!")
+            location.reload()
+          } else {
+            alert("Something went wrong. Please try again.")
+          }
+        })
+        .catch(error => {
+
+            // error handling if something goes wrong
+          console.log(error);
+        });
+    }
+
+    // Trigger the postProfile function when the "Submit" button is clicked
+    document.getElementById("submit").addEventListener("click", postProfile); // clicking submit will call the postProfile function, adding the new user to the data
+
+
+
 
         function createURL(dick){
             var baseurl = window.location.origin + "/profile.html";

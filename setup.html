@@ -17,15 +17,14 @@
     <input placeholder="Your Name" id="name"> <br>
     <input placeholder="Age" id="age"> <br>
     <input placeholder="Gender" id="gender"> <br>
-    <input placeholder="Interests" id="interests"> <br>
-
+    
     <div id="like-container">
         <input type="image" src="plus.png" id="add" width="10px" length="10px">
-        <input placeholder="Likes" style="width: 50px;">  <br>
+        <input placeholder="Likes" style="width: 50px;" class="likes">  <br>
     </div>
     <br>
     <input type="file" id="file-selector" accept=".jpg, .jpeg, .png"> <br>
-    <textarea placeholder="Type out a bio! No longer than 500 characters please" maxlength="500" style="width: 300px; height: 200px;"></textarea><br>
+    <textarea placeholder="Type out a bio! No longer than 500 characters please" maxlength="500" style="width: 300px; height: 200px;" id="bio"></textarea><br>
     <button id="submit">Submit</button>
 
 
@@ -41,10 +40,21 @@
 function postProfile() {
       const url = "http://127.0.0.1:8086/api/daters/create";  // url that has all the data and list of profiles
       
-      const name = document.getElementById("name").value;
+      const name = localStorage.getItem("name");
       const age = document.getElementById("age").value;
+      const uid = localStorage.getItem("uid");
+      const password = localStorage.getItem("password")
       const gender = document.getElementById("gender").value;
-      const interests = document.getElementById("interests").value;
+      const currInt = document.getElementsByClassName("likes")[0];
+      var interests = ""
+      //for (var interest in currInt){
+        //interests += interest + " and ";
+      //}
+      //interests += currInt.length;
+
+
+
+      const bio = document.getElementById("bio").value;
 
       const options = {
         method: 'POST', // POST = adding a profile
@@ -53,10 +63,12 @@ function postProfile() {
         },
         body: JSON.stringify({
           name: name,
-          uid: name + '' + age, // uid for now is just a combination of the user's name and their age (prob not the best idea but we can just stick with this till then)
+          uid: uid, // uid for now is just a combination of the user's name and their age (prob not the best idea but we can just stick with this till then)
           gender: gender,
           age: age,
-          interests: interests
+          interests: currInt,
+          bio : bio,
+          password : password
         })
       }
 
@@ -64,7 +76,6 @@ function postProfile() {
         .then(response => response.json())
         .then(data => {
           console.log(data); // prints the data if all goes well
-
           if(data){
             alert("Your profile has been made and is published for everyone to see!")
             location.reload()
@@ -81,8 +92,6 @@ function postProfile() {
 
     // Trigger the postProfile function when the "Submit" button is clicked
     document.getElementById("submit").addEventListener("click", postProfile); // clicking submit will call the postProfile function, adding the new user to the data
-
-
 
 
         function createURL(dick){
@@ -102,6 +111,7 @@ function postProfile() {
         });
         document.getElementById("add").addEventListener("click", function() {
             var reput = document.createElement("input");
+            reput.setAttribute("class", "likes")
             reput.setAttribute("placeholder", "Likes");
             reput.setAttribute("style", "width: 50px;");
             document.getElementById("like-container").appendChild(reput);
@@ -112,3 +122,6 @@ function postProfile() {
     </script>
 </body>
 </html>
+
+
+
